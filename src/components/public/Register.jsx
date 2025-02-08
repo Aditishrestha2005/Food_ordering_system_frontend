@@ -19,7 +19,7 @@ const RegisterPage = () => {
     return (
         <div className="login-container">
             <div className="login-image">
-                <img src={main} alt="Khanamandu Image" />
+                <img src={main} alt="Khanamandu Register pageS" />
             </div>
             <div className="login-form">
                 <h2>Register for Khanamandu</h2>

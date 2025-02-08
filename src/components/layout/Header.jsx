@@ -1,18 +1,27 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
-    return (
-        <section className='header'>
-            <h1>Khanamandu</h1>
-            <nav>
-                <Link to="#Home">Home</Link>
-                <Link to="#About us">About us</Link>
-                <Link to="#Contact">Contact us</Link>
-                <Link to="#Menu">Menu</Link>
-                <Link to="#Profile">Profile</Link>
-            </nav>
-        </section>
-    );
+  return (
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/main">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
+          <li>
+            <Link to="/profile">Profile</Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
 };
 
 export default Header;
