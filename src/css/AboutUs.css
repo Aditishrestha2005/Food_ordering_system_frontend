@@ -1,0 +1,18 @@
+.about-us {
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.about-us h3 {
+    color: #343a40;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.about-us p {
+    color: #495057;
+    font-size: 16px;
+    line-height: 1.5;
+}

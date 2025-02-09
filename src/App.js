@@ -4,8 +4,10 @@ import LoginPage from './components/public/Login';
 import RegisterPage from './components/public/Register';
 import DashboardPage from './components/private/Dashboard';
 import MainPage from './components/public/Main';
-import Header from './components/layout/Header'
-import AboutUs from './components/public/Aboutus';
+import Header from './components/layout/Header';
+import AboutUsPage from './components/public/AboutUs'; 
+import ContactPage from './components/public/ContactUs'; 
+import OfferPage from './/components/public/Offer';
 
 // Create a new component that uses useLocation
 function AppContent() {
@@ -20,7 +22,9 @@ function AppContent() {
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/dashboard" element={<DashboardPage />} />
                 <Route path="/main" element={<MainPage />} />
-                <Route path="/aboutus" element={<AboutUs />} />
+                <Route path="/about" element={<AboutUsPage />} /> 
+                <Route path="/contact" element={<ContactPage />} /> 
+                <Route path="/offer" element={<OfferaPge />} />
             </Routes>
         </>
     );
