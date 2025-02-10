@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../layout/Header'; // or adjust the path
 import '../../css/Main.css'
 import orderImage from '../../images/order.png';
 import pizzaImage from '../../images/p.png';
@@ -10,7 +9,7 @@ import friesImage from '../../images/f.png';
 const Main = () => {
     return (
         <div>
-            <Header /> {/* Use the existing Header component */}
+           
 
             <main>
                 <section className="welcome-section">
