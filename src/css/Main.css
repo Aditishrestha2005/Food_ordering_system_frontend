@@ -30,7 +30,7 @@
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 20px;
+    gap: 10px;
     margin: 0;
     padding: 0;
 }
@@ -50,9 +50,9 @@
 /* Hero Section */
 .hero {
     text-align: center;
-    padding: 90px 20px;
+    padding: 50px 20px;
     width: 100%;
-    margin-top: 1100px;
+    margin-top: 1650px;
 }
 
 .hero-title {
@@ -91,7 +91,7 @@
 }
 
 .auth-button {
-    background-color: #b22222;
+    background-color: #610505;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -102,17 +102,43 @@
 }
 
 .auth-button.signup {
-    background-color: #8b4513;
+    background-color: #740f0f;
 }
 
 .auth-button:hover {
-    background-color: #8b0000;
+    background-color: #e1a07d;
 }
 
 .auth-button.signup:hover {
-    background-color: #5b2000;
+    background-color:#e1a07d;
 }
 
+
+  
+/* About Us Section Styles */
+.about-us {
+    background-color: #f2f2f2; /* Light background for contrast */
+    padding: 40px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin: 40px 0; /* Spacing from other sections */
+  }
+  
+  .about-us h3 {
+    font-size: 2em; /* Larger font for the heading */
+    margin-bottom: 20px; /* Space below the heading */
+    color: #333; /* Dark text color */
+  }
+  
+  .about-us p {
+    font-size: 1.1em; /* Slightly larger text for readability */
+    line-height: 1.6; /* Increased line height for better readability */
+    color: #555; /* Softer text color */
+  }
+  
+  .about-us p + p {
+    margin-top: 10px; /* Space between paragraphs */
+  }
 /* Offers */
 .section {
     padding: 50px 20px;
@@ -159,7 +185,20 @@
     font-weight: bold;
     color: #333;
 }
-
+.contact-us {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .contact-us h4, .contact-us h5 {
+    margin: 10px 0;
+  }
+  
+  .contact-us p {
+    margin: 5px 0;
+  }
 /* Footer */
 .footer {
     background-color: #8b0000;

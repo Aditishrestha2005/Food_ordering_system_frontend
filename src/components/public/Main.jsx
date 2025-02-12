@@ -11,7 +11,7 @@ const Main = () => {
   return (
     <div className="container">
       {/* Navbar */}
-      <nav className="navbar">
+      <header className="navbar">
         <h1 className="logo">Khanamandu</h1>
         <ul className="nav-links">
           <li><a href="#home">Home</a></li>
@@ -19,29 +19,30 @@ const Main = () => {
           <li><a href="#contact">Contact us</a></li>
           <li><Link to="/profile">Profile</Link></li>
         </ul>
-      </nav>
+      </header>
 
       {/* Hero Section */}
-      <section id="home" className="hero">
+      <main id="home" className="hero">
         <h2 className="hero-title">Welcome to Khanamandu</h2>
         <p className="hero-subtitle">A taste you'll remember.</p>
         <div className="hero-image-container">
           <img src={orderImage} alt="Food Delivery" className="hero-image" />
         </div>
         <div className="button-group">
-          <button className="auth-button">Login</button>
-          <button className="auth-button signup">Sign up</button>
+          <Link to="Login">
+            <button className="auth-button" aria-label="Login">Login</button>
+          </Link>
+          <Link to="Register">
+            <button className="auth-button signup" aria-label="Sign up">Sign up</button>
+          </Link>
         </div>
-      </section>
+      </main>
 
       {/* About Us Section */}
       <section className="about-us" id="about">
         <h3>About Khanamandu</h3>
         <p>
-          At Khanamandu, we take pride in serving freshly made dishes using only the highest quality ingredients. Our menu offers a variety of delicious options, from handcrafted pizzas to juicy burgers and crispy fries, all prepared with care and passion. Each meal is thoughtfully crafted to ensure the perfect balance of flavor, freshness, and satisfaction, making every bite a memorable experience.
-        </p>
-        <p>
-          Whether you're here for a quick snack or a full meal, Khanamandu is committed to providing an enjoyable dining experience. We believe in delivering not just great food, but a welcoming atmosphere where you can enjoy flavorful dishes that bring people together, every time.
+          At Khanamandu, we take immense pride in serving freshly made dishes that not only tantalize your taste buds but also nourish your soul. Our culinary philosophy is rooted in quality, and we source only the highest quality ingredients from trusted local suppliers. This commitment ensures that every dish we serve is a celebration of flavor and freshness. Our diverse menu offers a wide array of delicious options, catering to every palate and preference. From our handcrafted pizzas, featuring a variety of toppings that range from classic margherita to gourmet creations, to our juicy burgers that are made from premium cuts of meat and cooked to perfection, each item is prepared with meticulous care and passion. Our crispy fries, golden and seasoned just right, provide the perfect accompaniment to any meal, and our selection of mouthwatering momos is sure to delight those seeking a taste of something different. Every meal at Khanamandu is thoughtfully crafted to ensure the perfect balance of flavor, freshness, and satisfaction.
         </p>
       </section>
 
@@ -50,22 +51,30 @@ const Main = () => {
         <h2 className="section-title">What We Offer</h2>
         <div className="offer-container">
           <div className="offer-box">
-            <img src={pizzaImage} alt="Pizza" className="offer-image" />
+            <img src={pizzaImage} alt="Delicious Pizza" className="offer-image" />
             <p className="offer-text">Delicious Pizzas</p>
           </div>
           <div className="offer-box">
-            <img src={burgerImage} alt="Burger" className="offer-image" />
+            <img src={burgerImage} alt="Juicy Burger" className="offer-image" />
             <p className="offer-text">Juicy Burgers</p>
           </div>
           <div className="offer-box">
-            <img src={momoImage} alt="Momo" className="offer-image" />
+            <img src={momoImage} alt="Tasty Momo" className="offer-image" />
             <p className="offer-text">Tasty Momos</p>
           </div>
           <div className="offer-box">
-            <img src={friesImage} alt="Fries" className="offer-image" />
+            <img src={friesImage} alt="Crispy Fries" className="offer-image" />
             <p className="offer-text">Crispy Fries</p>
           </div>
         </div>
+      </section>
+
+      {/* Contact Us Section */}
+      <section className="contact-us" id="contact">
+        <h4>Phone Number</h4>
+        <p>+977 9876543210</p>
+        <h5>Email</h5>
+        <p>khanamandu@gmail.com</p>
       </section>
 
       {/* Footer */}
