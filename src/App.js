@@ -1,37 +1,23 @@
-import './App.css';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginPage from './components/public/Login';
 import RegisterPage from './components/public/Register';
 import DashboardPage from './components/private/Dashboard';
 import MainPage from './components/public/Main';
-import Header from './components/layout/Header'
+import './App.css';
 
-
-// Create a new component that uses useLocation
-function AppContent() {
-    const currentLocation = useLocation();
-
+const App = () => {
     return (
-        <>
-            {currentLocation.pathname !== '/dashboard' && <Header />}
+        <Router>
             <Routes>
-                <Route path="/" element={<LoginPage />} />
+                <Route path="/" element={<MainPage />} />
+                <Route path="/main" element={<MainPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/dashboard" element={<DashboardPage />} />
-                <Route path="/main" element={<MainPage />} />
-                
             </Routes>
-        </>
-    );
-}
-
-function App() {
-    return (
-        <Router>
-            <AppContent />
         </Router>
     );
-}
+};
 
 export default App;
