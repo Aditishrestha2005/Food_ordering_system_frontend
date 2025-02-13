@@ -4,7 +4,7 @@
     text-align: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 10px;
 }
 
 /* Navbar */
@@ -101,19 +101,27 @@
     transition: background 0.3s ease;
 }
 
-.auth-button.signup {
-    background-color: #740f0f;
-}
-
-.auth-button:hover {
-    background-color: #e1a07d;
-}
-
-.auth-button.signup:hover {
-    background-color:#e1a07d;
-}
 
 
+.button-group {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+  }
+  
+  .auth-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #992323; /* Bootstrap primary color */
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .auth-button:hover {
+    background-color:#610505; /* Darker shade on hover */
+  }
+  
   
 /* About Us Section Styles */
 .about-us {
@@ -191,20 +199,19 @@
     border: 1px solid #ddd;
     border-radius: 5px;
   }
+  .contact-us h2{
+    font-size: 24px;
+    font-style: bold;
+  }
   
   .contact-us h4, .contact-us h5 {
     margin: 10px 0;
+    font-size: 15px;
   }
   
   .contact-us p {
     margin: 5px 0;
   }
 /* Footer */
-.footer {
-    background-color: #8b0000;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    margin-top: 30px;
-    font-size: 14px;
-}
+
+

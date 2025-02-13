@@ -5,6 +5,8 @@ import pizzaImage from "../../images/p.png";
 import burgerImage from "../../images/b.png";
 import momoImage from "../../images/momo.png";
 import friesImage from "../../images/f.png";
+import spicyImage from "../../images/spicy.png";
+import tandooriImage from "../../images/tandoori.png";
 import "../../css/Main.css";
 
 const Main = () => {
@@ -52,35 +54,40 @@ const Main = () => {
         <div className="offer-container">
           <div className="offer-box">
             <img src={pizzaImage} alt="Delicious Pizza" className="offer-image" />
-            <p className="offer-text">Delicious Pizzas</p>
+            <p className="offer-text">Delicious Pizza</p>
           </div>
           <div className="offer-box">
             <img src={burgerImage} alt="Juicy Burger" className="offer-image" />
-            <p className="offer-text">Juicy Burgers</p>
+            <p className="offer-text">Juicy Burger</p>
           </div>
           <div className="offer-box">
             <img src={momoImage} alt="Tasty Momo" className="offer-image" />
-            <p className="offer-text">Tasty Momos</p>
+            <p className="offer-text"> Momo</p>
           </div>
           <div className="offer-box">
             <img src={friesImage} alt="Crispy Fries" className="offer-image" />
             <p className="offer-text">Crispy Fries</p>
+          </div>
+          <div className="offer-box">
+            <img src={spicyImage} alt="Spicy wings" className="offer-image" />
+            <p className="offer-text">Spicy Wings</p>
+          </div>
+          <div className="offer-box">
+            <img src={tandooriImage} alt="Tandoori" className="offer-image" />
+            <p className="offer-text">Tandoori</p>
           </div>
         </div>
       </section>
 
       {/* Contact Us Section */}
       <section className="contact-us" id="contact">
+      <h2 className="section-title">Get in touch with us</h2>
         <h4>Phone Number</h4>
         <p>+977 9876543210</p>
         <h5>Email</h5>
         <p>khanamandu@gmail.com</p>
       </section>
 
-      {/* Footer */}
-      <footer className="footer">
-        <p>© 2025 Khanamandu. All Rights Reserved.</p>
-      </footer>
     </div>
   );
 };
