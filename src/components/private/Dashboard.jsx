@@ -87,7 +87,7 @@ const Dashboard = () => {
         <div className="modal">
           <div className="modal-content">
             <span className="close" onClick={() => setModalVisible(false)}>&times;</span>
-            <h2>Order Summary</h2>
+            <h2>Total</h2>
             <ul>
               {menuItems.map((item, index) => (
                 quantities[index] > 0 && (
