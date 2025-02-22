@@ -4,6 +4,11 @@ import LoginPage from './components/public/Login';
 import RegisterPage from './components/public/Register';
 import DashboardPage from './components/private/Dashboard';
 import MainPage from './components/public/Main';
+import ProfilePage from './components/public/Profile';
+import AdminDashboardPage from './components/private/Admindashboard';
+
+
+
 import './App.css';
 
 const App = () => {
@@ -15,6 +20,8 @@ const App = () => {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/dashboard" element={<DashboardPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/admindashboard" element={<AdminDashboardPage />} />
             </Routes>
         </Router>
     );

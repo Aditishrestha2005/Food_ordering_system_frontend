@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../css/dashboard.css';
 import chickenMomo from '../../images/chickenmomo.jpg';
 import buffMomo from '../../images/buffmomo.jpg';
-import porkMomo from '../../images/pork momo.jpg'; // Ensure this file exists
+import porkMomo from '../../images/pork momo.jpg';
 import frenchFries from '../../images/frenchfries.jpg';
 import tandooriMomo from '../../images/tandoori momo.jpg';
 import paneerMomo from '../../images/pannermomo.jpg';
@@ -20,48 +20,80 @@ import spicyWings from '../../images/spicy wings.jpg';
 import bbqWings from '../../images/bbqwings.jpg';
 
 const menuItems = [
-  { name: 'Chicken Momo', price: 250, img: chickenMomo },
+  { name: 'Chicken Momo', price: 350, img: chickenMomo },
   { name: 'Buff Momo', price: 300, img: buffMomo },
-  { name: 'Pork Momo', price: 350, img: porkMomo },
+  { name: 'Pork Momo', price: 450, img: porkMomo },
   { name: 'French Fries', price: 180, img: frenchFries },
-  { name: 'Tandoori Momo', price: 220, img: tandooriMomo },
+  { name: 'Tandoori Momo', price: 580, img: tandooriMomo },
   { name: 'Paneer Momo', price: 240, img: paneerMomo },
-  { name: 'Meat Lover Pizza', price: 480, img: meatLoverPizza },
+  { name: 'Meat Lover Pizza', price: 1050, img: meatLoverPizza },
   { name: 'Chips Chilli', price: 300, img: chipsChilli },
-  { name: 'Margherita Pizza', price: 480, img: margherita },
-  { name: 'Veggie Pizza', price: 450, img: veggiePizza },
-  { name: 'Chicken Burger', price: 380, img: chickenBurger },
+  { name: 'Margherita Pizza', price: 880, img: margherita },
+  { name: 'Veggie Pizza', price: 550, img: veggiePizza },
+  { name: 'Chicken Burger', price: 480, img: chickenBurger },
   { name: 'Loaded Fries', price: 420, img: loadedFries },
   { name: 'Hamburger', price: 400, img: hamburger },
-  { name: 'Bacon Burger', price: 450, img: baconBurger },
+  { name: 'Bacon Burger', price: 550, img: baconBurger },
   { name: 'Veg Burger', price: 300, img: vegBurger },
-  { name: 'Tandoori', price: 250, img: tandoori },
-  { name: 'Spicy Wings', price: 220, img: spicyWings },
+  { name: 'Tandoori', price: 800, img: tandoori },
+  { name: 'Spicy Wings', price: 420, img: spicyWings },
   { name: 'BBQ Wings', price: 520, img: bbqWings },
 ];
 
-const Dashboard = () => {
-  const [quantities, setQuantities] = useState(Array(menuItems.length).fill(0));
-  const [modalVisible, setModalVisible] = useState(false); // Define modalVisible state
+const UserDashboard = () => {
+  const [quantities, setQuantities] = useState(Array(menuItems.length).fill(0)); // Start at 0
+  const [modalVisible, setModalVisible] = useState(false);
+  const [orderConfirmed, setOrderConfirmed] = useState(false);
+
+  // Debug state changes
+  useEffect(() => {
+    console.log('Modal Visible:', modalVisible);
+  }, [modalVisible]);
+
+  useEffect(() => {
+    console.log('Quantities:', quantities);
+  }, [quantities]);
+
   const increment = (index) => {
-    const newQuantities = [...quantities];
-    newQuantities[index] += 1;
-    setQuantities(newQuantities);
+    setQuantities((prevQuantities) => {
+      const newQuantities = [...prevQuantities];
+      newQuantities[index] += 1;
+      return newQuantities;
+    });
   };
 
   const decrement = (index) => {
-    const newQuantities = [...quantities];
-    if (newQuantities[index] > 0) {
-      newQuantities[index] -= 1;
-    }
-    setQuantities(newQuantities);
+    setQuantities((prevQuantities) => {
+      const newQuantities = [...prevQuantities];
+      if (newQuantities[index] > 0) {
+        newQuantities[index] -= 1;
+      }
+      return newQuantities;
+    });
   };
+
   const handleProceed = () => {
-    setModalVisible(true);
+    console.log('Proceed button clicked!'); // Debug log
+    if (quantities.some(qty => qty > 0)) { // Only proceed if items are selected
+      setModalVisible(true);
+      setOrderConfirmed(false); // Reset confirmation
+    } else {
+      alert('Please select at least one item before proceeding.'); // Optional user feedback
+    }
+  };
+
+  const confirmOrder = () => {
+    setOrderConfirmed(true);
+    // Optional: Add logic to send order to backend or reset quantities
+    console.log('Order confirmed with totals:', { items: menuItems, quantities, total });
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+    setOrderConfirmed(false); // Reset confirmation when closing
   };
 
   const total = quantities.reduce((acc, qty, index) => acc + qty * menuItems[index].price, 0);
-
 
   return (
     <div className="dashboard">
@@ -73,35 +105,61 @@ const Dashboard = () => {
             <h2>{item.name}</h2>
             <p>Rs {item.price}</p>
             <div className="quantity-controls">
-              <button onClick={() => decrement(index)}>-</button>
-              <span>{quantities[index]}</span>
-              <button onClick={() => increment(index)}>+</button>
+              <button 
+                onClick={() => decrement(index)} 
+                className="quantity-button"
+                disabled={quantities[index] <= 0} // Disable if quantity is 0
+              >
+                -
+              </button>
+              <span className="quantity">{quantities[index]}</span>
+              <button 
+                onClick={() => increment(index)} 
+                className="quantity-button"
+              >
+                +
+              </button>
             </div>
           </div>
         ))}
-     </div>
-      <button className="proceed-button" onClick={handleProceed}>Proceed</button>
+      </div>
+      <button 
+        className="proceed-button" 
+        onClick={handleProceed}
+        disabled={total === 0} // Disable if no items selected
+      >
+        Proceed
+      </button>
 
       {/* Modal for Order Summary */}
       {modalVisible && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={() => setModalVisible(false)}>&times;</span>
+        <div className="modal" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <span className="close" onClick={closeModal}>×</span>
             <h2>Total</h2>
-            <ul>
+            <ul className="order-list">
               {menuItems.map((item, index) => (
                 quantities[index] > 0 && (
-                  <li key={index}>
+                  <li key={index} className="order-item">
                     {item.name}: {quantities[index]} x Rs {item.price} = Rs {quantities[index] * item.price}
                   </li>
                 )
               ))}
             </ul>
             <h3>Total: Rs {total}</h3>
+            <button 
+              className="confirm-button" 
+              onClick={confirmOrder}
+              disabled={orderConfirmed} // Disable after confirmation
+            >
+              Confirm Order
+            </button>
+            {orderConfirmed && <p className="confirmation-message">✅ Your order has been confirmed!</p>}
           </div>
         </div>
       )}
     </div>
   );
 };
-export default Dashboard;
+
+export default UserDashboard;

@@ -1,128 +1,180 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .dashboard {
-  font-family: Arial, sans-serif;
   padding: 20px;
-  margin-top: 700px; /* Adjusted from 2500px to a more reasonable value */
-  background-color: #f0c677; /* Light background color */
+  background-color: #f4e4bc; /* Beige background as in your image */
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  width: 1500px;
+  margin-top: 350px;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1 {
   text-align: center;
-  font-size: 2.5rem;
-  color: #333; /* Dark text color */
-  margin-bottom: 30px; /* Space below the title */
+  font-size: 2rem;
+  color: #4a2c2c; /* Dark brown for title */
+  margin-bottom: 20px;
 }
 
 .menu-grid {
-  display: flex; /* Use flexbox for layout */
-  flex-wrap: wrap; /* Allow items to wrap onto the next line */
-  justify-content: center; /* Center items */
-  gap: 20px; /* Space between items */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Side by side, wrapping as needed */
+  gap: 20px;
+  max-width: 1200px; /* Limit grid width for better layout */
+  width: 100%;
+  padding: 0 20px;
 }
 
 .menu-item {
-  background-color: #fff; /* White background for menu items */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  width: 250px; /* Fixed width */
-  padding: 20px; /* Padding inside items */
-  text-align: center; /* Center text */
-  transition: transform 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.menu-item:hover {
-  transform: translateY(-5px); /* Lift effect on hover */
+  border: 2px solid #d4a017; /* Gold border as in your image */
+  border-radius: 10px;
+  background-color: white;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .menu-image {
-  width: 100%; /* Full width of the container */
-  height: 150px; /* Fixed height */
-  object-fit: cover; /* Maintain aspect ratio */
-  border-radius: 8px; /* Rounded corners for images */
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
-.menu-item h2 {
-  font-size: 1.6rem; /* Title font size */
-  margin: 10px 0; /* Space above and below title */
-  color: #333; /* Dark text color */
+h2 {
+  font-size: 1.2rem;
+  color: #4a2c2c;
+  margin: 10px 0;
 }
 
-.menu-item p {
-  font-size: 1.2rem; /* Price font size */
-  color: #888; /* Lighter text color for price */
+p {
+  font-size: 1rem;
+  color: #555;
+  margin: 5px 0;
 }
 
 .quantity-controls {
-  display: flex; /* Use flexbox for quantity controls */
-  justify-content: center; /* Center controls */
-  align-items: center; /* Center vertically */
-  margin-top: 10px; /* Space above controls */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
 }
 
-.quantity-controls button {
-  background-color: #a26524; /* Button color */
+.quantity-button {
+  background-color: #8b4513; /* Brown buttons as in your image */
   color: white;
   border: none;
   padding: 5px 10px;
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer on hover */
-  font-size: 1rem; /* Button font size */
-  margin: 0 5px; /* Space between buttons */
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 1rem;
 }
 
-.quantity-controls button:hover {
-  background-color: #e9a73d; /* Darker color on hover */
+.quantity-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.quantity {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #4a2c2c;
 }
 
 .proceed-button {
-  margin-top: 20px; /* Space above the proceed button */
-  background-color: #842910; /* Button color */
-  color: white; /* White text */
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #d4a017; /* Gold button as in your image */
+  color: white;
   border: none;
-  padding: 10px 15px; /* Padding for button */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer on hover */
-  font-size: 16px; /* Button font size */
-  display: block; /* Block display to center */
-  margin-left: auto; /* Auto margin for centering */
-  margin-right: auto; /* Auto margin for centering */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  width: 150px; /* Match button width in your image */
+  text-align: center;
 }
 
-.proceed-button:hover {
-  background-color: #973612; /* Darker color on hover */
+.proceed-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
+
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Ensure it appears above other content */
+  z-index: 1000;
 }
 
 .modal-content {
-  background-color: #fff;
-  border-radius: 10px;
+  background: white;
   padding: 20px;
-  width: 300px; /* Width of the modal */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-  position: relative; /* To position the close button */
+  border-radius: 10px;
+  position: relative;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-color: #f9f9f9;
 }
 
 .close {
   position: absolute;
   top: 10px;
-  right: 15px;
+  right: 10px;
   font-size: 1.5rem;
-  cursor: pointer; /* Pointer on hover */
-  color: #333; /* Close button color */
+  cursor: pointer;
+  color: #4a2c2c;
+}
+
+.order-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.order-item {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+h3 {
+  font-size: 1.2rem;
+  color: #4a2c2c;
+  margin: 15px 0;
+}
+
+.confirm-button {
+  display: block;
+  margin: 10px auto;
+  padding: 8px 16px;
+  background-color: #8b4513; /* Brown button for confirm */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.confirm-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.confirmation-message {
+  text-align: center;
+  color: #28a745;
+  margin-top: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
 }
