@@ -1,17 +1,52 @@
 import React, { useState } from "react";
-import '../../css/Register.css';
-import main from '../../images/main.png';
-import { Link } from 'react-router-dom';
+import API from "../api/api"; // Import API object
+import "../../css/Register.css";
+import main from "../../images/main.png";
+import { Link, useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [contact, setContact] = useState('');
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [address, setAddress] = useState("");
+    const [message, setMessage] = useState(""); // Success message
+    const [error, setError] = useState(""); // Error message
 
-    const handleRegister = () => {
-        // Add registration logic here
-        console.log('Register clicked', { name, email, password, contact });
+    const navigate = useNavigate();
+
+    const handleRegister = async (e) => {
+        e.preventDefault(); // Prevent default form submission
+
+        // Basic client-side validation
+        if (!username || !password || !email || !phoneNumber || !address) {
+            setError("Please fill in all required fields.");
+            return;
+        }
+
+        try {
+            const userData = {
+                username,
+                password,
+                email,
+                phone_number: phoneNumber, // Match backend field name
+                address,
+            };
+            const response = await API.registerUser(userData);
+
+            if (response.status === 201) {
+                setMessage("Registration successful! Redirecting to login...");
+                setError(""); // Clear any previous errors
+                setTimeout(() => navigate("/login"), 2000); // Redirect after 2 seconds
+            }
+        } catch (err) {
+            // Handle specific error messages from backend
+            const errorMessage =
+                err.response?.data?.error || "Registration failed. Please try again.";
+            setError(errorMessage);
+            setMessage(""); // Clear any previous success message
+            console.error("Registration error:", err);
+        }
     };
 
     return (
@@ -21,56 +56,75 @@ const RegisterPage = () => {
             </div>
             <div className="login-form">
                 <h2>Register for Khanamandu</h2>
-                
-                <div className="form-group">
-                    <label htmlFor="register-name">Name</label>
-                    <input
-                        type="text"
-                        id="register-name"
-                        placeholder="Enter your name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
-                </div>
 
-                <div className="form-group">
-                    <label htmlFor="register-email">Email</label>
-                    <input
-                        type="email"
-                        id="register-email"
-                        placeholder="Enter your email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
+                {message && <p className="success-message">{message}</p>}
+                {error && <p className="error-message">{error}</p>}
 
-                <div className="form-group">
-                    <label htmlFor="register-password">Password</label>
-                    <input
-                        type="password"
-                        id="register-password"
-                        placeholder="Enter your password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
+                <form onSubmit={handleRegister}>
+                    <div className="form-group">
+                        <label htmlFor="register-username">Username</label>
+                        <input
+                            type="text"
+                            id="register-username"
+                            placeholder="Enter your username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                        />
+                    </div>
 
-                <div className="form-group">
-                    <label htmlFor="register-contact">Contact</label>
-                    <input
-                        type="text"
-                        id="register-contact"
-                        placeholder="Enter your contact number"
-                        value={contact}
-                        onChange={(e) => setContact(e.target.value)}
-                    />
-                </div>
+                    <div className="form-group">
+                        <label htmlFor="register-email">Email</label>
+                        <input
+                            type="email"
+                            id="register-email"
+                            placeholder="Enter your email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </div>
 
-                <div className="form-group">
-                    <button type="button" onClick={handleRegister}>
-                        Register
-                    </button>
-                </div>
+                    <div className="form-group">
+                        <label htmlFor="register-password">Password</label>
+                        <input
+                            type="password"
+                            id="register-password"
+                            placeholder="Enter your password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="register-phone">Phone Number</label>
+                        <input
+                            type="tel"
+                            id="register-phone"
+                            placeholder="Enter your phone number"
+                            value={phoneNumber}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
+                            required
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="register-address">Address</label>
+                        <input
+                            type="text"
+                            id="register-address"
+                            placeholder="Enter your address"
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                            required
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <button type="submit">Register</button>
+                    </div>
+                </form>
 
                 <div className="login">
                     <p>

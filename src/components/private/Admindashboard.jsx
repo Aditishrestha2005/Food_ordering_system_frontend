@@ -2,21 +2,21 @@ import React, { useState } from 'react';
 import "../../css/AdminDashboard.css";
 import chickenMomo from '../../images/chickenmomo.jpg';
 import buffMomo from '../../images/buffmomo.jpg';
-import porkMomo from '../../images/pork momo.jpg';
+import porkMomo from '../../images/pork_momo.jpg';
 import frenchFries from '../../images/frenchfries.jpg';
-import tandooriMomo from '../../images/tandoori momo.jpg';
+import tandooriMomo from '../../images/tandoori_momo.jpg';
 import paneerMomo from '../../images/pannermomo.jpg';
 import meatLoverPizza from '../../images/meatloverpizza.jpg';
-import chipsChilli from '../../images/chilli potato.jpg';
+import chipsChilli from '../../images/chilli_potato.jpg';
 import margherita from '../../images/margheritapizza.jpg';
 import veggiePizza from '../../images/veggiepizza.jpg';
-import chickenBurger from '../../images/chicken burger.jpg';
+import chickenBurger from '../../images/chickenburger.jpg';
 import loadedFries from '../../images/loadedfries.jpg';
 import hamburger from '../../images/hambueger.jpg';
-import baconBurger from '../../images/bacon burger.jpg';
+import baconBurger from '../../images/bacon_burger.jpg';
 import vegBurger from '../../images/vegburger.jpg';
 import tandoori from '../../images/tandoorifull.jpg';
-import spicyWings from '../../images/spicy wings.jpg';
+import spicyWings from '../../images/spicy_wings.jpg';
 import bbqWings from '../../images/bbqwings.jpg';
 
 const generateMenuItemsWithRandomQuantities = () => {

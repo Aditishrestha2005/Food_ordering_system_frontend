@@ -19,7 +19,7 @@ const Main = () => {
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About us</a></li>
           <li><a href="#contact">Contact us</a></li>
-          <li><Link to="/profile">Profile</Link></li>
+      
         </ul>
       </header>
 
